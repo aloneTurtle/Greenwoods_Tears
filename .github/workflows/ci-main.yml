@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+env:
+  WESNOTH_VERSION: master
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Repository checkout
+      uses: actions/checkout@v6
+      with:
+        path: add-ons
+
+    - name: Lint WML
+      uses: czyzby/wesnoth-wml-linter@v1
+      with:
+        wesnoth-version: ${{ env.WESNOTH_VERSION }}
+        spellcheck: true

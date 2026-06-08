@@ -25,3 +25,4 @@ jobs:
       with:
         wesnoth-version: ${{ env.WESNOTH_VERSION }}
         spellcheck: true
+        lint-flags: -K
